@@ -21,13 +21,19 @@ body {
   margin-top: 10px;
   background-color: #007998;
 }
-
+*:focus {
+  outline: none;
+}
 button{
   background: #007998;
   border: none;
   margin: 5px;
+  padding: 2px;
   color: white;
   border-radius: 2px;
+}
+i{
+  margin: 2px;
 }
 Link{
   text-decoration: unset;
@@ -46,6 +52,19 @@ input{
     grid-template-columns:repeat(3, 1fr);
     grid-auto-rows: auto;
     
+}
+.weatherLine{
+  margin: 2px;
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  grid-auto-rows: 1fr;
+  background: #007998;
+}
+
+#quickDay{
+  display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-auto-rows: auto;
 }
 #datePick{
   align-content: center;
@@ -80,15 +99,30 @@ input{
   font-size: 14px;
 }
 .detailed{
+  display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    grid-auto-rows: auto;
   background: #007998;
-  padding: 15px;
+  /* padding: 15px; */
   text-align: left;
 }
+.detailed > div{
+  margin: 15px;
+}
+iframe{
+  display: grid;
+  height: 400px;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+}
 @media(min-width: 1000px){
-  .bigScreen{
+
+  #quickDay, .weatherLine, .bigScreen, iframe{
     margin-left:20vw;
     width: 60vw;
-  }
+    
+}
 }
 
 h2{
@@ -101,7 +135,7 @@ p{
  color: 	#FEBF34;
 }
 .yellowLink{
-  text-decoration: none;
+  /* text-decoration: none; */
   color: 	#FEBF34;
   font-size: 20px;
   margin: 0px 5px 0px 5px;
@@ -135,4 +169,16 @@ p{
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
 }

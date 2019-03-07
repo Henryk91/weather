@@ -13,10 +13,10 @@ export default class Home extends Component {
     render() {
         let dayBlock = null;
         if (this.props.weatherData) {
-            dayBlock = this.props.weatherData.daily.data.map((val) => {
+            dayBlock = this.props.weatherData.daily.data.map((val, i) => {
                 return (
                     <div key={val.time} >
-                        <DefaultDay data={val} />
+                        <DefaultDay currently={this.props.weatherData.currently} data={val} id={i}/>
                     </div>
                 )
             })
@@ -26,7 +26,7 @@ export default class Home extends Component {
             <div className="bigScreen" id="home">
             
                 {this.props.weatherData ? <div><p>{this.props.weatherData.daily.summary}</p>
-                 <p>(click day for details)</p></div> : <h3>Please enter a location</h3>}
+                 <p>(click day for details)</p> </div> : <h3>Please enter a location</h3>}
                 <div className="weekDays">{dayBlock ? dayBlock : null}</div>
             </div>
         );

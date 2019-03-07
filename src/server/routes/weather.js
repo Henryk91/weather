@@ -8,16 +8,18 @@ router.get("/", function(req, res, next) {
   var coordinates = req.query.coordinates;
 console.log(coordinates)
   fetch(
-    `https://api.darksky.net/forecast/${Api_Key}/${coordinates}?units=auto&exclude=minutely,hourly,alerts`
+    `https://api.darksky.net/forecast/${Api_Key}/${coordinates}?units=auto&exclude=alerts,flags`
   )
     .then(function(fetchRes) {
       return fetchRes.json();
     })
     .then(function(json) {
       res.setHeader("Content-Type", "application/json");
+      console.log("sending data")
       res.send(JSON.stringify(json));
     })
     .catch(function(error) {
+      console.log("Error")
       res.send(JSON.stringify(error));
     });
 });

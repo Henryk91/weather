@@ -29,31 +29,31 @@ export default class SearchBar extends Component {
     }
 
     getCoordinates() {
-        this.setState({search: true})
-        var title = "Glasgow";
 
         if (this.title.value) {
-            title = this.title.value;
-        } else {
-            this.title.value = title;
-        }
+            var title = this.title.value;
+            this.setState({search: true})
 
-        fetch('/api/geocode/?query=' + title)
+        // fetch('/api/geocode/?query=' + title)
+        fetch('https://nominatim.openstreetmap.org/search/' + title + '?format=json&limit=1')
             .then(res => res.json())
             .then(data => {
                 this.setState({ locationData: data }),
-                this.getData(data.latitude, data.longitude)
+                this.getData(data[0].lat, data[0].lon)
             })
+        } else {
+            alert("Please Enter A Location")
+        }
     }
 
     useGeoloc(){
         this.setState({search: true})
-        fetch('http://ip-api.com/json')
+        fetch('https://ipapi.co/json')
             .then(res => res.json())
             .then(data => {
                 this.setState({ locationData: data }),
                 this.title.value = data.city;
-                this.getData(data.lat, data.lon)
+                this.getData(data.latitude, data.longitude)
             })
             
         
@@ -64,9 +64,9 @@ export default class SearchBar extends Component {
         return (
             <div>
                 <br />
-                <button className="blueHover" onClick={this.useGeoloc}> Geo </button>
-                <input id="locationBox" type="text" ref={(c) => this.title = c} placeholder="Type Location Here..." ></input>
-                <button className="blueHover" onClick={this.getCoordinates}> GO </button>
+                <button className="blueHover" onClick={this.useGeoloc} title="Geo Locate"> <i className="fas fa-map-marker-alt"></i> </button>
+                <input id="locationBox" type="text" ref={(c) => this.title = c} required="required" placeholder="Type Location Here..." ></input>
+                <button className="blueHover" onClick={this.getCoordinates} title="Search"><i className="fas fa-search"></i></button>
                 {this.state.search ? <div className="loader"></div> : null }
             </div>
         )
