@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History component renders with detaild and date checker 1`] = `
+<div>
+  <h2>
+    Pick a Date
+  </h2>
+  <form>
+    <input
+      id="datePick"
+      required="required"
+      type="date"
+    />
+    <br />
+    <button
+      id="dateSubmit"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

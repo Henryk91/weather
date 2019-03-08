@@ -1,8 +1,9 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { History, SearchBar, NavLinks } from './views/Containers/index';
 
-class App extends React.Component {
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { History, Home, Detailed, SearchBar } from './views/Components/index';
+
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,25 +12,38 @@ class App extends React.Component {
     this.setWeatherData = this.setWeatherData.bind(this)
   }
 
-  
-  setWeatherData(val){
-    
-    this.setState({weatherData: val.weatherData})
-    
-    console.log(this.state.weatherData.daily.data)
+  setWeatherData(val) {
+    this.setState({ weatherData: val.weatherData })
   }
   render() {
+    const weatherData = this.state.weatherData;
     return (
-      <Router>
-        <nav>
-          <SearchBar set={this.setWeatherData} />
-          <NavLinks weatherData={this.state.weatherData} />
+      <div>
 
-        </nav>
-      </Router>
-    );
+        <Router>
+          <div>
+            <header>
+              <SearchBar set={this.setWeatherData} />
+              <nav className="bigScreen" id="links">
+                
+                <Link className="yellowLink" to="/" title="Weather By Week">This Week</Link>
+                <Link className="yellowLink" to="/history" title="Weather By Day">Select By Day</Link>
+              </nav>
+            </header>
+            <Route
+              exact path='/'
+              render={(props) => <Home {...props} weatherData={weatherData} />}
+            />
+            <Route
+              exact path='/detailed/:id'
+              render={(props) => <Detailed {...props} weatherData={weatherData} />}
+            />
+            <Route exact path="/history"
+              render={(props) => <History {...props} weatherData={weatherData} />}
+            />
+          </div>
+        </Router>
+      </div>
+    )
   }
 }
-
-
-export default App;

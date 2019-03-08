@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Searchbar component renders the header correctly 1`] = `
+<header>
+  <button
+    className="searchButton blueHover"
+    id="geoButton"
+    onClick={[Function]}
+    title="Geo Locate"
+  >
+    <i
+      className="fas fa-map-marker-alt"
+    />
+  </button>
+  <input
+    aria-label="Type Location Here"
+    id="locationBox"
+    placeholder="Type Location..."
+    required="required"
+    type="text"
+  />
+  <button
+    className="searchButton blueHover"
+    id="goButton"
+    onClick={[Function]}
+    title="Search"
+  >
+    <i
+      className="fas fa-search"
+    />
+  </button>
+</header>
+`;

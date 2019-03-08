@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --colors"
+    "test:coverage": "jest --coverage --colors" 
   },
   "author": "Henry Koekemoer",
   "license": "MIT",
@@ -31,12 +31,6 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.0",
     "babel-loader": "^8.0.0",
-    "@babel/polyfill": "^7.0.0-beta.51",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.4.2",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "jest": "^23.4.2",
     "clean-webpack-plugin": "^1.0.0",
     "concurrently": "^4.0.0",
     "css-loader": "^2.0.0",

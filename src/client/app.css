@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('./views/Components/SearchBar/style.css');
+@import url('./views/Components/Home/style.css');
+@import url('./views/Components/Hourly/style.css');
+@import url('./views/Components/History/style.css');
+@import url('./views/Components/Detailed/style.css');
+@import url('./views/Components/DefaultDay/style.css');
 
 h1 {
   color: 	#FEBF34;
@@ -13,17 +19,6 @@ body {
   font-family: 'Open Sans', sans-serif;
   margin: auto;
 }
-#locationBox{
-  font-size: 20px;
-  
-}
-#links{
-  margin-top: 10px;
-  background-color: #007998;
-}
-*:focus {
-  outline: none;
-}
 button{
   background: #007998;
   border: none;
@@ -31,9 +26,6 @@ button{
   padding: 2px;
   color: white;
   border-radius: 2px;
-}
-i{
-  margin: 2px;
 }
 Link{
   text-decoration: unset;
@@ -47,84 +39,20 @@ input{
   border-radius: 2px;
   width: 200px;
 }
-.weekDays{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    grid-auto-rows: auto;
-    
-}
-.weatherLine{
-  margin: 2px;
-  display:grid;
-  grid-template-columns:repeat(5, 1fr);
-  grid-auto-rows: 1fr;
-  background: #007998;
-}
-
 #quickDay{
   display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    grid-auto-rows: auto;
-}
-#datePick{
-  align-content: center;
-  color: white;
-  background: #007998;
-}
-.weekDays :first-child{
-  grid-column:1/4;
-}
-.weekDays :last-child{
-  grid-column:2/3;
-}
-.dayBox{
-  height: fit-content;
-  margin: 0px;
-  padding:0px;
-  border-radius: 2px;
-}
-.dayBox :first-child{
-  grid-column:1/3;
-}
-.dayBox{
-  background: #007998;
-  margin: 5px;
-  padding: 5px;
+  grid-template-columns:repeat(3, 1fr);
+  grid-auto-rows: auto;
 }
 .blueHover:hover{
   background: rgba(0, 121, 152, 0.5);
 }
-.dayBox > p{
-  margin: 0;
-  font-size: 14px;
-}
-.detailed{
-  display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    grid-auto-rows: auto;
-  background: #007998;
-  /* padding: 15px; */
-  text-align: left;
-}
-.detailed > div{
-  margin: 15px;
-}
-iframe{
-  display: grid;
-  height: 400px;
-  width: 100vw;
-  margin: 0px;
-  padding: 0px;
-}
 @media(min-width: 1000px){
-
   #quickDay, .weatherLine, .bigScreen, iframe{
     margin-left:20vw;
-    width: 60vw;
-    
+    width: 60vw; 
+  }
 }
-}
-
 h2{
   margin: 0px;
 }
@@ -133,6 +61,44 @@ p{
 }
 .yellowP{
  color: 	#FEBF34;
+}
+.leadP{
+  color: 	#FEBF34;
+  font-size: 16px; 
+  font-weight: bolder;
+}
+.loader {
+  display:grid;
+  position: fixed;
+  margin-top: 20vh; 
+  margin-left: 46vw; 
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid  #007998;
+  border-radius: 50%;
+  width: 5vw;
+  height: 5vw;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+*:focus {
+  outline: none;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+#links{
+  margin-top: 10px;
+  background-color: #007998;
 }
 .yellowLink{
   /* text-decoration: none; */
@@ -145,40 +111,4 @@ p{
   border: 1px solid #FEBF34;
   border-radius: 2px;
   padding: 1px;
-}
-.leadP{
-  color: 	#FEBF34;
-  font-size: 16px; 
-  font-weight: bolder;
-}
-.loader {
-  display:grid;
-  position: fixed;
-  margin-top: 20vh; 
-  margin-left: 46vw; 
-
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid  #007998;
-  border-radius: 50%;
-  /* box-shadow: 1px 0px 30px 20px rgba(0,0,0,1); */
-  width: 5vw;
-  height: 5vw;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
-  opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: white;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-  color: white;
 }

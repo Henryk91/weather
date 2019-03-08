@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultDay component renders all details 1`] = `
+<div>
+  <a
+    href="/detailed/1551996000"
+    onClick={[Function]}
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+  >
+    <div
+      className="dayBox blueHover"
+    >
+      <p
+        className="leadP"
+      >
+        Fri Mar 08 
+      </p>
+      <canvas
+        height={40}
+        width={40}
+      />
+      <p>
+        19
+        °/
+        30
+        °
+      </p>
+      <p>
+        Rain: 
+        18
+        %
+      </p>
+    </div>
+  </a>
+</div>
+`;

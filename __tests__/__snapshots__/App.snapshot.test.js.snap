@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History component renders with detaild and date checker 1`] = `
+<div>
+  <div>
+    <header>
+      <header>
+        <button
+          className="searchButton blueHover"
+          id="geoButton"
+          onClick={[Function]}
+          title="Geo Locate"
+        >
+          <i
+            className="fas fa-map-marker-alt"
+          />
+        </button>
+        <input
+          aria-label="Type Location Here"
+          id="locationBox"
+          placeholder="Type Location..."
+          required="required"
+          type="text"
+        />
+        <button
+          className="searchButton blueHover"
+          id="goButton"
+          onClick={[Function]}
+          title="Search"
+        >
+          <i
+            className="fas fa-search"
+          />
+        </button>
+      </header>
+      <nav
+        className="bigScreen"
+        id="links"
+      >
+        <a
+          className="yellowLink"
+          href="/"
+          onClick={[Function]}
+          title="Weather By Week"
+        >
+          This Week
+        </a>
+        <a
+          className="yellowLink"
+          href="/history"
+          onClick={[Function]}
+          title="Weather By Day"
+        >
+          Select By Day
+        </a>
+      </nav>
+    </header>
+    <div
+      className="bigScreen"
+      id="home"
+    >
+      <h3>
+        Please enter a location
+      </h3>
+      <div
+        className="weekDays"
+      >
+         
+         
+      </div>
+    </div>
+  </div>
+</div>
+`;

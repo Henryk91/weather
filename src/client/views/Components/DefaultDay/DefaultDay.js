@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import ReactAnimatedWeather from 'react-animated-weather';
-
-
+// import {style} from './style.css';
 
 export default class DefaultDay extends Component {
     constructor(props) {
