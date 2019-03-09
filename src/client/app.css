@@ -9,7 +9,7 @@
 h1 {
   color: 	#FEBF34;
 }
-h3{
+h3 , h2{
   color: white;
 }
 body {
@@ -31,6 +31,9 @@ Link{
   text-decoration: unset;
   color: white;
 }
+#darkSkyLogo{
+  width: 200px;
+}
 input{
   text-align: center;
   background: #007998;
@@ -48,7 +51,7 @@ input{
   background: rgba(0, 121, 152, 0.5);
 }
 @media(min-width: 1000px){
-  #quickDay, .weatherLine, .bigScreen, iframe{
+  #quickDay, .weatherLine, .bigScreen{
     margin-left:20vw;
     width: 60vw; 
   }
@@ -66,6 +69,21 @@ p{
   color: 	#FEBF34;
   font-size: 16px; 
   font-weight: bolder;
+}
+#links{
+  margin-top: 10px;
+  background-color: #007998;
+}
+.yellowLink{
+  color: 	#FEBF34;
+  font-size: 20px;
+  margin: 0px 5px 0px 5px;
+  font-weight: bolder;
+}
+.yellowLink:hover{
+  border: 1px solid #FEBF34;
+  border-radius: 2px;
+  padding: 1px;
 }
 .loader {
   display:grid;
@@ -95,20 +113,4 @@ p{
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: white;
-}
-#links{
-  margin-top: 10px;
-  background-color: #007998;
-}
-.yellowLink{
-  /* text-decoration: none; */
-  color: 	#FEBF34;
-  font-size: 20px;
-  margin: 0px 5px 0px 5px;
-  font-weight: bolder;
-}
-.yellowLink:hover{
-  border: 1px solid #FEBF34;
-  border-radius: 2px;
-  padding: 1px;
 }

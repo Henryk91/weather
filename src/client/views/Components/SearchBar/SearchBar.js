@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import './style.css';
+import { getCoordinatesFromName, getGeoloc, getWeather } from '../../Helpers/requests'
 export default class SearchBar extends Component {
 
     constructor(props) {
@@ -7,50 +7,65 @@ export default class SearchBar extends Component {
         this.state = {
             search: false,
         };
-        this.getData = this.getData.bind(this);
         this.getCoordinates = this.getCoordinates.bind(this);
         this.useGeoloc = this.useGeoloc.bind(this)
-
     }
-    getData(latitude, longitude) {
-        fetch(`/api/weather?coordinates=${latitude},${longitude}`)
-            .then(res => res.json())
-            .then(data => {
-                this.props.set({ weatherData: data })
-                this.setState({ search: false })
-            });
+    setRecData(data) {
+        this.setState({ search: false })
+        if (data.currently) {
+            this.props.set({ weatherData: data })
+        } else {
+            alert("Comunication error please try again in a few minutes.")
+        }
     }
     getCoordinates() {
-        if (this.title.value) {
-            var title = this.title.value;
+        var title = this.title.value;
+        if (title) {
             this.setState({ search: true })
-            fetch('https://nominatim.openstreetmap.org/search/' + title + '?format=json&limit=1')
-                .then(res => res.json())
-                .then(data => {
-                    this.getData(data[0].lat, data[0].lon)
-                })
+            getCoordinatesFromName(title, (data) => {
+
+                if (data !== "Error") {
+                    this.setRecData(data)
+                } else {
+                    this.setState({ search: false })
+                    alert(title + " could not be found.")
+                    this.title.value = ""
+                }
+            })
         } else {
             alert("Please Enter A Location")
         }
     }
     useGeoloc() {
-        this.setState({ search: true })
-        fetch('https://ipapi.co/json')
-            .then(res => res.json())
-            .then(data => {
-                this.title.value = data.city;
-                this.getData(data.latitude, data.longitude)
+        if (confirm('Allow location usage?')) {
+            this.setState({ search: true })
+            getGeoloc((data) => {
+
+                if (data !== "Error") {
+                    getWeather(data.latitude, data.longitude, (data2) => {
+                        this.setRecData(data2)
+                    });
+                    this.title.value = data.city;
+                } else {
+                    alert("Location could not be found. Please use search mode.")
+                    this.setState({ search: false })
+                    this.title.value = '';
+                }
             })
+        }
     }
     render() {
         return (
             <header>
-                <button id="geoButton" className="searchButton blueHover" onClick={this.useGeoloc} title="Geo Locate">
+                <button id="geoButton" className="searchButton blueHover"
+                    onClick={this.useGeoloc} title="Geo Locate">
                     <i className="fas fa-map-marker-alt"></i>
                 </button>
                 <input id="locationBox" type="text" ref={(c) => this.title = c}
-                    required="required"aria-label="Type Location Here" placeholder="Type Location..." ></input>
-                <button id="goButton" className="searchButton blueHover" onClick={this.getCoordinates} title="Search">
+                    required="required" aria-label="Type Location Here"
+                    placeholder="Type Location..." ></input>
+                <button id="goButton" className="searchButton blueHover"
+                    onClick={this.getCoordinates} title="Search">
                     <i className="fas fa-search"></i>
                 </button>
                 {this.state.search ? <div className="loader"></div> : null}

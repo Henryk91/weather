@@ -2,73 +2,82 @@
 
 exports[`History component renders with detaild and date checker 1`] = `
 <div>
-  <div>
+  <header>
     <header>
-      <header>
-        <button
-          className="searchButton blueHover"
-          id="geoButton"
-          onClick={[Function]}
-          title="Geo Locate"
-        >
-          <i
-            className="fas fa-map-marker-alt"
-          />
-        </button>
-        <input
-          aria-label="Type Location Here"
-          id="locationBox"
-          placeholder="Type Location..."
-          required="required"
-          type="text"
+      <button
+        className="searchButton blueHover"
+        id="geoButton"
+        onClick={[Function]}
+        title="Geo Locate"
+      >
+        <i
+          className="fas fa-map-marker-alt"
         />
-        <button
-          className="searchButton blueHover"
-          id="goButton"
-          onClick={[Function]}
-          title="Search"
-        >
-          <i
-            className="fas fa-search"
-          />
-        </button>
-      </header>
-      <nav
-        className="bigScreen"
-        id="links"
+      </button>
+      <input
+        aria-label="Type Location Here"
+        id="locationBox"
+        placeholder="Type Location..."
+        required="required"
+        type="text"
+      />
+      <button
+        className="searchButton blueHover"
+        id="goButton"
+        onClick={[Function]}
+        title="Search"
       >
-        <a
-          className="yellowLink"
-          href="/"
-          onClick={[Function]}
-          title="Weather By Week"
-        >
-          This Week
-        </a>
-        <a
-          className="yellowLink"
-          href="/history"
-          onClick={[Function]}
-          title="Weather By Day"
-        >
-          Select By Day
-        </a>
-      </nav>
+        <i
+          className="fas fa-search"
+        />
+      </button>
     </header>
-    <div
+    <nav
       className="bigScreen"
-      id="home"
+      id="links"
     >
-      <h3>
-        Please enter a location
-      </h3>
-      <div
-        className="weekDays"
+      <a
+        className="yellowLink"
+        href="/"
+        onClick={[Function]}
+        title="Weather By Week"
       >
-         
-         
-      </div>
-    </div>
+        This Week
+      </a>
+      <a
+        className="yellowLink"
+        href="/history"
+        onClick={[Function]}
+        title="Weather By Day"
+      >
+        Select By Day
+      </a>
+    </nav>
+  </header>
+  <div
+    className="bigScreen"
+    id="home"
+  >
+    <h3>
+      Please enter a location
+    </h3>
+    <main
+      className="weekDays"
+    >
+       
+       
+    </main>
   </div>
+  <a
+    href="/https://darksky.net/poweredby/"
+    onClick={[Function]}
+    target="_blank"
+  >
+    <img
+      alt="powered by darksky"
+      id="darkSkyLogo"
+      src="https://darksky.net/dev/img/attribution/poweredby-oneline-darkbackground.png"
+    />
+  </a>
 </div>
 `;

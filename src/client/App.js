@@ -18,32 +18,32 @@ export default class App extends Component {
   render() {
     const weatherData = this.state.weatherData;
     return (
-      <div>
-
-        <Router>
-          <div>
-            <header>
-              <SearchBar set={this.setWeatherData} />
-              <nav className="bigScreen" id="links">
-                
-                <Link className="yellowLink" to="/" title="Weather By Week">This Week</Link>
-                <Link className="yellowLink" to="/history" title="Weather By Day">Select By Day</Link>
-              </nav>
-            </header>
-            <Route
-              exact path='/'
-              render={(props) => <Home {...props} weatherData={weatherData} />}
-            />
-            <Route
-              exact path='/detailed/:id'
-              render={(props) => <Detailed {...props} weatherData={weatherData} />}
-            />
-            <Route exact path="/history"
-              render={(props) => <History {...props} weatherData={weatherData} />}
-            />
-          </div>
-        </Router>
-      </div>
+      <Router>
+        <div>
+          <header>
+            <SearchBar set={this.setWeatherData} />
+            <nav className="bigScreen" id="links">
+              <Link className="yellowLink" to="/" title="Weather By Week">This Week</Link>
+              <Link className="yellowLink" to="/history" title="Weather By Day">Select By Day</Link>
+            </nav>
+          </header>
+          <Route
+            exact path='/'
+            render={(props) => <Home {...props} weatherData={weatherData} />}
+          />
+          <Route
+            exact path='/detailed/:id'
+            render={(props) => <Detailed {...props} weatherData={weatherData} />}
+          />
+          <Route exact path="/history"
+            render={(props) => <History {...props} weatherData={weatherData} />}
+          />
+          <Link to="https://darksky.net/poweredby/" target="_blank">
+            <img id="darkSkyLogo" src="https://darksky.net/dev/img/attribution/poweredby-oneline-darkbackground.png"
+              alt="powered by darksky" />
+          </Link>
+        </div>
+      </Router>
     )
   }
 }

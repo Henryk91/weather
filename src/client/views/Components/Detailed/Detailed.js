@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactAnimatedWeather from 'react-animated-weather';
 import { Hourly } from '../index';
-// import './style.css';
 import { getTime, convertIconName } from '../../Helpers/helper-functions';
 
 
@@ -16,40 +15,26 @@ export default class Detailed extends Component {
 
     render() {
         const weatherData = this.props.weatherData
-        // console.log(weatherData)
         let dayInfo = this.state.dayData;
         if (this.props.match) {
             dayInfo = weatherData.daily.data.filter((val) => val.time == this.props.match.params.id)[0];
         } else {
             dayInfo = weatherData.daily.data[0]
         }
-        let date = new Date(dayInfo.time * 1000)
-
+        
+        const detailed = detailHeader(dayInfo , weatherData , this.props.match );
         return (
             <Link style={{ textDecoration: 'none' }} to="/">
-                <h1>{date.toDateString()}</h1>
-                <ReactAnimatedWeather 
-                    className="detailsIcons"
-                    icon={convertIconName(weatherData.currently.icon)}
-                    color={'#FEBF34'}
-                    size={60}
-                    animate={true}
-                />
-
-                {this.props.match ? <p className="yellowP">Current Temp: {Math.round(weatherData.currently.temperature)}&#176;</p> : null}
-                <p className="yellowP">{dayInfo.summary}</p>
-                {this.props.match ? <iframe src={`https://maps.darksky.net/@temperature,${date.toISOString().slice(0,10)},22,${weatherData.latitude},${weatherData.longitude},7?defaultUnits=_c`}></iframe> : null }
-                
-                <p>(click anywhere to go back)</p>
-                <div className="bigScreen detailed">
-                    <div>
+                {detailed}
+                <main className="bigScreen detailed">
+                    <section>
                         <p className="leadP">Wind</p>
                         <p>Bearing: {dayInfo.windBearing}</p>
                         <p>Gust: {dayInfo.windGust}</p>
                         <p>Gust Time: {getTime(dayInfo.windGustTime)}</p>
                         <p>Speed: {dayInfo.windSpeed}</p>
-                    </div>
-                    <div>
+                    </section>
+                    <section>
                         <p className="leadP">Sky</p>
                         <p>Sunrise: {getTime(dayInfo.sunriseTime)} </p>
                         <p>Sunset: {getTime(dayInfo.sunsetTime)}</p>
@@ -57,8 +42,8 @@ export default class Detailed extends Component {
                         <p>UV Index Time: {getTime(dayInfo.uvIndexTime)}</p>
                         <p>Visibility: {dayInfo.visibility}</p>
                         <p>Ozone: {dayInfo.ozone}</p>
-                    </div>
-                    <div>
+                    </section>
+                    <section>
                         <hr />
                         <p className="leadP">Temp</p>
                         <p>High: {dayInfo.temperatureHigh}</p>
@@ -69,8 +54,8 @@ export default class Detailed extends Component {
                         <p>Max Time: {getTime(dayInfo.temperatureMaxTime)}</p>
                         <p>Min: {dayInfo.temperatureMin}</p>
                         <p>Min Time: {getTime(dayInfo.temperatureMinTime)}</p>
-                    </div>
-                    <div>
+                    </section>
+                    <section>
                         <hr />
                         <p className="leadP">Precipitation</p>
                         <p>Cloud Cover: {dayInfo.cloudCover * 100}</p>
@@ -81,10 +66,45 @@ export default class Detailed extends Component {
                         <p>Intensity Max: {dayInfo.precipIntensityMax}</p>
                         <p>Intensity Max time: {getTime(dayInfo.precipIntensityMaxtime)}</p>
                         <p>Pressure: {dayInfo.pressure}</p>
-                    </div>
-                </div>
-                {weatherData ? <div><Hourly weatherData={weatherData}/></div> : null}
+                    </section>
+                </main>
+                {weatherData ? <Hourly weatherData={weatherData} /> : null}
             </Link>
         );
     }
+}
+
+const detailHeader = (dayInfo, weatherData, propsMatch) => {
+    const date = new Date(dayInfo.time * 1000)
+    const dateForFrame = date.toISOString().slice(0, 10);
+    return (
+        <div>
+            <h1>{date.toDateString()}</h1>
+            <ReactAnimatedWeather
+                className="detailsIcons"
+                icon={convertIconName(weatherData.currently.icon)}
+                color={'#FEBF34'}
+                size={60}
+                animate={true}
+            />
+
+            {propsMatch ?
+                <p className="yellowP">Current Temp:
+                            {Math.round(weatherData.currently.temperature)}&#176;
+                        </p>
+                : null
+            }
+            <p className="yellowP">{dayInfo.summary}</p>
+            <p>(click anywhere to go back)</p>
+            {propsMatch ?
+                <iframe className="bigScreen" src={
+                    "https://maps.darksky.net/@temperature," + dateForFrame + ",22,"+
+                    weatherData.latitude + "," + weatherData.longitude +",7"+
+                    "?embed=true&defaultField=temperature&defaultUnits=_c"}>
+                </iframe>
+                : null
+            }
+            <br />
+        </div>
+    );
 }
