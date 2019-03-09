@@ -64,7 +64,7 @@ All the source code is inside **src** directory. Inside src there are client and
 
 All components are in their own folder (src/client/view/component) with the css file. For ease of testing all component css is linked into the main app.css file that is linked into the index.
 
-## Spesifics 
+## Specifics
 
 ### Api Key
 

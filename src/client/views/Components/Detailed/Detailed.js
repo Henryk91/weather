@@ -64,7 +64,7 @@ export default class Detailed extends Component {
                         <p>Intensity: {dayInfo.precipIntensity}</p>
                         <p>Probability: {Math.round(dayInfo.precipProbability * 100)}%</p>
                         <p>Intensity Max: {dayInfo.precipIntensityMax}</p>
-                        <p>Intensity Max time: {getTime(dayInfo.precipIntensityMaxtime)}</p>
+                        <p>Intensity Max time: {getTime(dayInfo.precipIntensityMaxTime)}</p>
                         <p>Pressure: {dayInfo.pressure}</p>
                     </section>
                 </main>

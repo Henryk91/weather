@@ -18,7 +18,7 @@ export default class Hourly extends Component {
                             <td>Date</td>
                             <td>Temp</td>
                             <td>Wind Speed</td>
-                            <td>Precip Prob</td>
+                            <td>Precipitation %</td>
                             <td>Icon</td>
                         </tr>
                     </thead>
