@@ -24,7 +24,7 @@ exports[`Detailed component renders all details 1`] = `
       Mostly cloudy starting in the afternoon.
     </p>
     <p>
-      (click anywhere to go back)
+      (Click anywhere to go back)
     </p>
     <br />
   </div>
@@ -160,7 +160,7 @@ exports[`Detailed component renders all details 1`] = `
       </p>
       <p>
         Intensity Max time: 
-        
+        14:00
       </p>
       <p>
         Pressure: 
@@ -187,7 +187,7 @@ exports[`Detailed component renders all details 1`] = `
             Wind Speed
           </td>
           <td>
-            Precip Prob
+            Precipitation %
           </td>
           <td>
             Icon

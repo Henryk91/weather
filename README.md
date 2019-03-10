@@ -5,7 +5,7 @@
 
 This is react weather app that gets data via a back-end server from [Dark Sky Api](https://darksky.net/dev/docs).
 
-There are two ways to pick a location either by adding the location by hand or letting the app discover your location.
+There are two ways to pick a location, either by typing the location in a search bar or letting the app discover your location.
 There are also two weather display modes to choose from: This Week and Select By day.
 - This Week has a quick overview of the week and by clicking a more detailed daily weather breakdown is given.
 - In Select By Day you can choose your day and receive a detailed breakdown of that day.
@@ -28,7 +28,7 @@ Testing is done with a Jest/Enzyme combination. The folder also contains a snaps
 
 ```bash
 # Clone the repository
-git clone https://github.com/henryk91/
+git clone https://github.com/Henryk91/weather.git
 
 # Go inside the directory
 cd weather
@@ -60,7 +60,7 @@ npm run test:coverage
 
 ### Folder Structure
 
-All the source code is inside **src** directory. Inside src there are client and server directories. All the front-end code (react, css, js and any other assets) are in the client directory. Backend Node.js/Express code are in the server directory.
+All the source code is inside src directory. Inside src there are client and server directories. All the front-end code (react, css, js) are in the client directory. Backend Node.js/Express is are in the server directory.
 
 All components are in their own folder (src/client/view/component) with the css file. For ease of testing all component css is linked into the main app.css file that is linked into the index.
 
@@ -68,20 +68,20 @@ All components are in their own folder (src/client/view/component) with the css 
 
 ### Api Key
 
-Dark Sky Api requires an api key to request data. A .env file has been set up to store the api key.
+Dark Sky Api requires an api key to request data. A file with the name .env needs to be set up to store the api key in this format: Api_Key='wdacwef1v2svesv81v8wef81s1evef8e' (no spaces as this is a shell file)
 
 ### Ports
 
-In dev mode there will be 2 servers running the webpack dev server for react is open on port 3000
+In dev mode there will be 2 servers running, the webpack dev server for react is open on port 3000
 the node server for the back end is on port 8080.
 
 ### Concurrently
 
-[Concurrently](https://github.com/kimmobrunfeldt/concurrently) is used to both servers concurrently in dev mode.
+[Concurrently](https://github.com/kimmobrunfeldt/concurrently) is used to serve both servers at the same time in dev mode.
 
 ### React Router
 
-I am using react-router-dom for client side routing.
+React-router-dom is used for client side routing.
 
 ### ESLint
 

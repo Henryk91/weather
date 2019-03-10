@@ -57,15 +57,24 @@ export default class SearchBar extends Component {
     render() {
         return (
             <header>
-                <button id="geoButton" className="searchButton blueHover"
-                    onClick={this.useGeoloc} title="Geo Locate">
+                <button
+                    id="geoButton"
+                    className="searchButton blueHover"
+                    onClick={this.useGeoloc}
+                    title="Geo Locate">
                     <i className="fas fa-map-marker-alt"></i>
                 </button>
-                <input id="locationBox" type="text" ref={(c) => this.title = c}
-                    required="required" aria-label="Type Location Here"
+                <input
+                    id="locationBox"
+                    type="text" ref={(c) => this.title = c}
+                    required="required"
+                    aria-label="Type Location Here"
                     placeholder="Type Location..." ></input>
-                <button id="goButton" className="searchButton blueHover"
-                    onClick={this.getCoordinates} title="Search">
+                <button
+                    id="goButton"
+                    className="searchButton blueHover"
+                    onClick={this.getCoordinates}
+                    title="Search">
                     <i className="fas fa-search"></i>
                 </button>
                 {this.state.search ? <div className="loader"></div> : null}

@@ -9,7 +9,7 @@ test('DefaultDay component renders all details', () => {
     const wData = weatherData();
     const rendered = renderer.create(
         <Router>
-            <DefaultDay weatherData={wData} data={wData.daily.data[0]} id={1} />
+            <DefaultDay weatherData={wData} dailyWeather={wData.daily.data[0]} id={1} />
         </Router>
     );
     expect(rendered.toJSON()).toMatchSnapshot();

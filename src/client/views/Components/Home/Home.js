@@ -7,19 +7,8 @@ export default class Home extends Component {
     }
 
     render() {
-        let dayBlock = null;
         const weatherData = this.props.weatherData;
-        if (weatherData) {
-            dayBlock = weatherData.daily.data.map((val, i) => {
-                return (
-                    <DefaultDay
-                        key={val.time}
-                        currently={weatherData.currently}
-                        data={val} id={i}
-                    />
-                )
-            })
-        }
+        const dayBlocks = createDayBlocks(weatherData);
         return (
             <div className="bigScreen" id="home">
                 {weatherData ?
@@ -27,10 +16,26 @@ export default class Home extends Component {
                         <p>{weatherData.daily.summary}</p>
                         <p>(click day for details)</p>
                     </section> :
-                    <h3>Please enter a location</h3>
+                    <h3>Please enter a location and press the <br /> search button or use the location button at the top left.</h3>
                 }
-                <main className="weekDays"> {dayBlock ? dayBlock : null} </main>
+                <main className="weekDays"> {dayBlocks ? dayBlocks : null} </main>
             </div>
         );
     }
+}
+const createDayBlocks = (weatherData) => {
+    let dayBlock = null;
+        if (weatherData) {
+            dayBlock = weatherData.daily.data.map((val, i) => {
+                return (
+                    <DefaultDay
+                        key={val.time}
+                        currentWeather={weatherData.currently}
+                        dailyWeather={val} 
+                        id={i}
+                    />
+                )
+            })
+        }
+    return dayBlock;
 }

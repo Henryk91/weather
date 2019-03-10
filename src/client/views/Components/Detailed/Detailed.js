@@ -4,28 +4,21 @@ import ReactAnimatedWeather from 'react-animated-weather';
 import { Hourly } from '../index';
 import { getTime, convertIconName } from '../../Helpers/helper-functions';
 
-
 export default class Detailed extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            dayData: null,
-        };
     }
-
     render() {
         const weatherData = this.props.weatherData
-        let dayInfo = this.state.dayData;
-        if (this.props.match) {
-            dayInfo = weatherData.daily.data.filter((val) => val.time == this.props.match.params.id)[0];
-        } else {
-            dayInfo = weatherData.daily.data[0]
-        }
-        
-        const detailed = detailHeader(dayInfo , weatherData , this.props.match );
+
+        const propForId = this.props.match;
+        let dayInfo = null;
+        propForId ? dayInfo = getDayInfo(weatherData, propForId) : dayInfo = weatherData.daily.data[0]
+
+        const generalInfo = detailHeader(dayInfo, weatherData, propForId);
         return (
             <Link style={{ textDecoration: 'none' }} to="/">
-                {detailed}
+                {generalInfo}
                 <main className="bigScreen detailed">
                     <section>
                         <p className="leadP">Wind</p>
@@ -74,7 +67,7 @@ export default class Detailed extends Component {
     }
 }
 
-const detailHeader = (dayInfo, weatherData, propsMatch) => {
+const detailHeader = (dayInfo, weatherData, propForId) => {
     const date = new Date(dayInfo.time * 1000)
     const dateForFrame = date.toISOString().slice(0, 10);
     return (
@@ -87,19 +80,18 @@ const detailHeader = (dayInfo, weatherData, propsMatch) => {
                 size={60}
                 animate={true}
             />
-
-            {propsMatch ?
-                <p className="yellowP">Current Temp:
-                            {Math.round(weatherData.currently.temperature)}&#176;
-                        </p>
+            {propForId ?
+                <p className="yellowP">
+                    Current Temp: {Math.round(weatherData.currently.temperature)}&#176;
+                </p>
                 : null
             }
             <p className="yellowP">{dayInfo.summary}</p>
-            <p>(click anywhere to go back)</p>
-            {propsMatch ?
+            <p>(Click anywhere to go back)</p>
+            {propForId ?
                 <iframe className="bigScreen" src={
-                    "https://maps.darksky.net/@temperature," + dateForFrame + ",22,"+
-                    weatherData.latitude + "," + weatherData.longitude +",7"+
+                    "https://maps.darksky.net/@temperature," + dateForFrame + ",22," +
+                    weatherData.latitude + "," + weatherData.longitude + ",7" +
                     "?embed=true&defaultField=temperature&defaultUnits=_c"}>
                 </iframe>
                 : null
@@ -107,4 +99,8 @@ const detailHeader = (dayInfo, weatherData, propsMatch) => {
             <br />
         </div>
     );
+}
+
+const getDayInfo = (weatherData, propForId) => {
+   return weatherData.daily.data.filter((val) => val.time == propForId.params.id)[0]
 }

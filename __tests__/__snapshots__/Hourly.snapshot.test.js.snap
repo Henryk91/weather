@@ -20,7 +20,7 @@ exports[`Hourly component renders all hours 1`] = `
           Wind Speed
         </td>
         <td>
-          Precip Prob
+          Precipitation %
         </td>
         <td>
           Icon

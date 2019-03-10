@@ -59,7 +59,9 @@ exports[`History component renders with detaild and date checker 1`] = `
     id="home"
   >
     <h3>
-      Please enter a location
+      Please enter a location and press the 
+      <br />
+       search button or use the location button at the top left.
     </h3>
     <main
       className="weekDays"

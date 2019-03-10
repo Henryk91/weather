@@ -21,7 +21,7 @@ function setup() {
       window.alert = jest.fn();
       const p = wrapper.find('#dateSubmit');
       p.simulate('click');
-      expect(window.alert).toHaveBeenCalledWith("Please Add A Date");
+      expect(window.alert).toHaveBeenCalledWith("Please add a date.");
     });
 
     it('Should alert if dateSubmit click without location info', () => {
@@ -30,7 +30,7 @@ function setup() {
       const p = wrapper.find('#dateSubmit');
       wrapper.find('#datePick').instance().value =  '2019-01-01';
       p.simulate('click');
-      expect(window.alert).toHaveBeenCalledWith("Please add location then press search or press the geo location button");
+      expect(window.alert).toHaveBeenCalledWith("Please add location then press search or press the geo location button.");
     });
     
   });

@@ -30,21 +30,26 @@ export default class History extends Component {
           }
         })
       } else {
-        alert("Please add location then press search or press the geo location button")
+        alert("Please add location then press search or press the geo location button.")
       }
     } else {
-      alert("Please Add A Date")
+      alert("Please add a date.")
     }
   }
 
   render() {
+    const weatherData = this.state.weatherData
     return (
       <form>
         <h2>Pick a Date</h2>
-        <input id="datePick" ref={(c) => this.title = c} type="date" required="required">
+        <input
+          id="datePick"
+          ref={(c) => this.title = c}
+          type="date"
+          required="required">
         </input><br />
         <button id="dateSubmit" onClick={this.getDateInfo}>Submit</button>
-        {this.state.weatherData ? <Detailed weatherData={this.state.weatherData} /> : null}
+        {weatherData ? <Detailed weatherData={weatherData} /> : null}
         {this.state.search ? <div className="loader"></div> : null}
       </form>
     );
